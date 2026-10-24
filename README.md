@@ -1,10 +1,16 @@
 # Keyboard workflow auditor
 
-상태·컨트롤·키 조작 경로로 사용자 업무의 키보드 도달 가능성과 막힌 단계를 찾는다.
+<a href="README.md"><kbd><strong>English</strong></kbd></a> <a href="README.ko.md"><kbd>한국어</kbd></a> <a href="README.ja.md"><kbd>日本語</kbd></a> <a href="README.zh-CN.md"><kbd>简体中文</kbd></a>
 
-A focused executable resource for AI-assisted structured work. **Zero runtime dependencies, no API key, Node.js 22+.**
+**Audit whether declared user tasks are reachable through keyboard controls, states and interaction paths.**
 
-[Live workspace](https://proofnova.github.io/keyboard-workflow/) · [한국어 리소스 모음](https://proofnova.github.io/) · [Task contract](resource.json) · [Prior art](RESEARCH.md)
+An executable resource for AI-assisted structured work. Runs locally with **zero runtime dependencies, no API key and no account**.
+
+[Open the workspace](https://proofnova.github.io/keyboard-workflow/) · [Explore all resources](https://proofnova.github.io/) · [Task contract](resource.json) · [Alternatives and research](RESEARCH.md)
+
+## Quick start
+
+Requires Node.js 22 or later. No package installation is needed.
 
 ```sh
 git clone https://github.com/proofnova/keyboard-workflow.git
@@ -15,24 +21,49 @@ node cli.mjs example.json
 
 ## What it does
 
-Control-specific activation rules and shortest valid state-graph paths.
+Audit whether declared user tasks are reachable through keyboard controls, states and interaction paths.
 
-A pointer-only or unnamed button cannot make a keyboard workflow reachable; this is a bounded graph audit.
+**Implementation:** Control-specific activation rules and shortest valid state-graph paths.
 
-## Connect a model
+**Task-specific recovery:** Fix accessible names/focus/key wiring, then repeat the real browser task as a separate check.
 
-Import `execute` from `./run.mjs`. Expose this declared tool to your model, validate its tool name/input contract, execute it, and retain the returned JSON and input digest. Calculations and constraint checks are performed by the resource. No paid model or new agent framework is required.
+### Required input fields
 
-[SKILL.md](SKILL.md) contains the workflow, interpretation and recovery procedure. [example.json](example.json) is a complete input; [cases.json](cases.json) contains worked and edge-case synthetic regression checks. The website executes the same code locally in a bounded Worker. It has no model or external data upload.
+`states` · `actions` · `start` · `goal`
 
-## Recovery and limits
+Field names are part of the API contract and stay unchanged in every language. See [example.json](example.json) for a complete input and [cases.json](cases.json) for normal and edge cases.
 
-Fix accessible names/focus/key wiring, then repeat the real browser task as a separate check.
+### Worked example
 
-Underlying algorithms and task outcomes already exist in the alternatives. An existing tool configured for this exact task may remove the need for a separate project. Small synthetic tests cannot establish broad expertise or external demand. See [RESEARCH.md](RESEARCH.md). A plan/audit is not an external action or proof of actual user benefit.
+```json
+{
+  "reachable": true,
+  "steps": 1,
+  "blocked_actions": 0,
+  "traps": 0
+}
+```
+
+These values come from the included synthetic example. They are not model-performance or real-user adoption claims.
+
+## Use it with a model
+
+Import `execute` from `./run.mjs`, register it as a declared tool, validate the selected tool and input, and retain the returned JSON and input digest. The user or integration selects the resource. Deterministic code performs the calculation; this does not demonstrate autonomous model reasoning.
+
+The [AI skill](SKILL.md) explains input checks, interpretation and recovery. The browser runs the same calculation locally in a bounded worker and does not upload the input.
+
+## Validation and recovery
+
+The bundled tests cover two synthetic task cases, Node/browser parity, input immutability and rejection of missing input. Run `npm test` after any change.
+
+Inspect held, rejected or infeasible items before using the result. Correct the input or declared constraints and rerun; do not treat an unresolved case as success. Exact rules and task-specific limits are in the task contract and skill.
+
+## Scope and limits
+
+The underlying algorithms and task outcomes have established prior art. Practical differentiation is a hypothesis; an existing configured tool may already be the better choice. Synthetic regression checks do not establish general model expertise or real-world impact. The recorded model comparison covers six synthetic tasks and does not validate all thirty resources. No external users or GitHub Stars membership are implied.
 
 ## Contribute
 
-Open an issue with a synthetic/redacted failing JSON input, expected result and Node version. Add a regression test and run `npm test`. Never include credentials or real private records in public examples.
+Report a reproducible, synthetic or redacted failing input, the expected result and your Node version. Include a regression case and run `npm test`. Keep credentials and private records out of public examples.
 
 MIT · Proofnova · 2026
