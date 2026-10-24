@@ -9,14 +9,14 @@ Problem: 상태·컨트롤·키 조작 경로로 사용자 업무의 키보드 �
 |Alternative|Existing capability|Conditions/burden|Candidate difference|Unconfirmed|
 |---|---|---|---|---|
 |[WAI ARIA keyboard practices](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/)|Keyboard navigation and focus patterns|Real widget behavior and assistive-technology checks; this graph supports only listed activation roles|Control-specific activation rules and shortest valid state-graph paths. A narrow dependency-free JSON/AI tool contract.|Exact parity and real-user benefit not measured.|
-|undefined|undefined|undefined|Control-specific activation rules and shortest valid state-graph paths. A narrow dependency-free JSON/AI tool contract.|Exact parity and real-user benefit not measured.|
+|[Playwright assertions](https://playwright.dev/docs/test-assertions)|Real browser assertions and repeated checks of rendered state|Browser/test setup; a declarative state graph does not replace actual keyboard testing|Control-specific activation rules and shortest valid state-graph paths. A narrow dependency-free JSON/AI tool contract.|Exact parity and real-user benefit not measured.|
 |Manual or composed workflow|A person follows the rules with a spreadsheet, scripts and tool documentation|Repeated setup, arithmetic, checks and trace keeping; actual human time savings have not been measured|Control-specific activation rules and shortest valid state-graph paths. A narrow dependency-free JSON/AI tool contract.|Exact parity and real-user benefit not measured.|
 
 ## Six attempts to disprove the idea
 
 1. Same functionality already exists? Yes, underlying domain operations are established. An existing tool configured for this exact task may remove the need for a separate project.
 2. Existing configuration enough? Plausibly; no exhaustive plugin/configuration execution was completed. Check the nearest tool before expanding this prototype.
-3. Another name? Search terms include Keyboard workflow auditor; keyboard workflow; 상태·컨트롤·키 조작 경로로 사용자 업무의 키보드 도달 가능성과 막힌 단계를 찾는다.; wai; playwright. Existing algorithm names appear in the method above.
+3. Another name? Search terms include keyboard workflow reachability accessible state graph 키보드 접근성. Existing algorithm names appear in the method above.
 4. Important user difference? Fewer runtime dependencies and a validated tool boundary are concrete; actual adoption and time savings remain unmeasured.
 5. Added complexity? Structured JSON is a real setup cost. A browser example and exact field errors reduce it, but do not erase it.
 6. Retraction evidence? An existing setup with the same access/contract or a failed invariant/performance comparison removes the claimed practical advantage.

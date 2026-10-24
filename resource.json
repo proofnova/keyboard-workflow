@@ -48,6 +48,10 @@
       "evidence_status": "primary page read; exact feature parity not fully executed"
     },
     {
+      "name": "Playwright assertions",
+      "url": "https://playwright.dev/docs/test-assertions",
+      "capability": "Real browser assertions and repeated checks of rendered state",
+      "burden": "Browser/test setup; a declarative state graph does not replace actual keyboard testing",
       "evidence_status": "primary page read; exact feature parity not fully executed"
     },
     {
@@ -64,18 +68,22 @@
       "Korean"
     ],
     "queries": [
-      "Keyboard workflow auditor",
-      "keyboard workflow",
-      "상태·컨트롤·키 조작 경로로 사용자 업무의 키보드 도달 가능성과 막힌 단계를 찾는다.",
-      "wai",
-      "playwright"
+      "keyboard workflow reachability accessible state graph 키보드 접근성"
     ],
     "scope": "Primary documentation and repository descriptions were read on the public web. Competitor code, plugins and packaged execution were not exhaustively tested. This is a bounded prior-art review, not a worldwide novelty search.",
     "limitations": [
       "Search results and documentation do not establish universal absence.",
       "Competitor configuration/plugin parity is not exhausted.",
       "No independent end-user interview or deployment evidence."
-    ]
+    ],
+    "proposed_queries": [
+      "Keyboard workflow auditor",
+      "keyboard workflow",
+      "상태·컨트롤·키 조작 경로로 사용자 업무의 키보드 도달 가능성과 막힌 단계를 찾는다.",
+      "wai",
+      "playwright"
+    ],
+    "query_scope": "One actual bilingual search per resource, grouped in shared cached batches; additional suggested terms are explicitly proposed, not executed."
   },
   "checked_at": "2026-10-24",
   "distinctive_capability": "Control-specific activation rules and shortest valid state-graph paths. An offline executable can be called by a small model and checked against an explicit task contract.",
@@ -101,7 +109,8 @@
   "validation_results": {
     "worked_cases": 1,
     "evaluation_cases": 1,
-    "root_required_field_rejection": true
+    "root_required_field_rejection": true,
+    "fixture_role": "Development regression fixtures; not an untouched final model evaluation set."
   },
   "external_impact_evidence": [],
   "decision": {
